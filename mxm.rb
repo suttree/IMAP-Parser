@@ -23,8 +23,9 @@ end
 
 @words = {}
 gmail.label(label).emails.each do |email|
-  email.body.to_s.gsub(/<\/?[^>]*>/, '').split(' ').each do |word|
-    word = word.gsub(/[^0-9a-z ]/i, '')
+  email.body.to_s.downcase.gsub(/<\/?[^>]*>/, '').split(/\b/).each do |word|
+    word = word.gsub(/[^[:alnum:]]/, '')
+    next if word.length < 4
     if @words[word]
       @words[word] += 1
     else
