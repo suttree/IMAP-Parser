@@ -7,9 +7,9 @@
 require 'gmail'
 require 'highline/import'
 
-email = ask("Please enter your email address:")
-password = ask("Please enter your password:") { |q| q.echo = "x" }
-label = ask("Please enter a mailbox label:")
+email = ask('Please enter your email address:')
+password = ask('Please enter your password:') { |q| q.echo = 'x' }
+label = ask('Please enter a mailbox label:')
 
 gmail = Gmail.new(email, password)
 
